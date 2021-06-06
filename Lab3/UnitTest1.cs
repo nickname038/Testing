@@ -167,18 +167,23 @@ namespace Lab3
         [Theory]
 
         [InlineData(2, true)]
-        [InlineData(33, false)]
-        [InlineData(65, false)]
-        public void shouldReturnInitBool_GetFlag(ulong lenght, bool initValue)
+        [InlineData(33, true)]
+        [InlineData(65, true)]
+        public void shouldReturnTrueForTrueInitValue_GetFlag(ulong lenght, bool initValue)
         {
             var obj = new MultipleBinaryFlag(lenght, initValue);
-            if (initValue)
-            {
-                Assert.True(obj.GetFlag());
-            } else
-            {
-                Assert.False(obj.GetFlag());
-            }
+            Assert.True(obj.GetFlag());
+        }
+
+        [Theory]
+
+        [InlineData(2, false)]
+        [InlineData(33, false)]
+        [InlineData(65, false)]
+        public void shouldReturnFalseForFalseInitValue_GetFlag(ulong lenght, bool initValue)
+        {
+            var obj = new MultipleBinaryFlag(lenght, initValue);
+            Assert.False(obj.GetFlag());
         }
 
         [Theory]
